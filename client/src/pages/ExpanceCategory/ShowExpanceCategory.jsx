@@ -48,7 +48,7 @@ const ShowExpanceCategory = () => {
   useEffect(() => {
     const fetchExpanceCategory = async () => {
       try {
-        const res = await axios.get("/api/expance/category");
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/expance/category`);
         setExpanceCategoryData(res.data);
         setFilteredData(res.data); // Initialize filteredData with full data
       } catch (error) {
@@ -97,7 +97,7 @@ const ShowExpanceCategory = () => {
       if (result.isConfirmed) {
         try {
           const response = await axios.delete(
-            `/api/expance/category/${ExpanceCategoryid}`
+            `${process.env.REACT_APP_API_URL}/api/expance/category/${ExpanceCategoryid}`
           );
           // Remove the deleted category from state
           setExpanceCategoryData(

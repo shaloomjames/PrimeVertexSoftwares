@@ -81,7 +81,7 @@ const AddExpanceCategory = () => {
             ExpanceCategoryColor
         }
         try {
-            const response  = await axios.post("/api/expance/category", formData);
+            const response  = await axios.post(`${process.env.REACT_APP_API_URL}/api/expance/category`, formData);
             showSuccessAlert(response.data.msg);
             setTimeout(() => {
                     navigate("/showexpanceCategory");

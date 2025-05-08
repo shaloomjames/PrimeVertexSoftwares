@@ -66,7 +66,7 @@ const UpdateExpanceCategory = () => {
     useEffect(() => {
         const fetchExpanceCategory = async () => {
           try {
-            const res = await axios.get(`/api/expance/category/${id}`);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/expance/category/${id}`);
             setexpanceCategoryName(res.data.ExpanceCategoryName)
             setExpanceCategoryColor(res.data.ExpanceCategoryColor)
             setexpanceCategoryStatus(res.data.ExpanceCategoryStatus)
@@ -100,7 +100,7 @@ const UpdateExpanceCategory = () => {
             ExpanceCategoryStatus
             };
         try {
-            const res = await axios.put(`/api/expance/category/${id}`, formData);
+            const res = await axios.put(`${process.env.REACT_APP_API_URL}/api/expance/category/${id}`, formData);
             showSuccessAlert(res.data.msg);
             setTimeout(() => {
                 navigate("/showexpanceCategory");

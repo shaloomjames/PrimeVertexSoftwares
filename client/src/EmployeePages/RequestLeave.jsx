@@ -62,7 +62,7 @@
 //   useEffect(() => {
 //     const fetchLeaveTypes = async () => {
 //       try {
-//         const res = await axios.get("/api/leaveType");
+//         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/leaveType`);
 //         setleaveTypes(res.data);
 //       } catch (error) {
 //         console.error("Error fetching leave Type:", error);
@@ -99,7 +99,7 @@
 //     };
 
 //     try {
-//       const response = await axios.post("/api/leave", formData);
+//       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/leave`, formData);
 //       showSuccessAlert(response.data.msg);
 //       setTimeout(() => {
 //         navigate("/employee/leave-history");
@@ -278,7 +278,7 @@ const RequestLeave = () => {
   useEffect(() => {
     const fetchLeaveTypes = async () => {
       try {
-        const res = await axios.get("/api/leaveType");
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/leaveType`);
         setLeaveTypes(res.data);
       } catch (error) {
         console.error("Error fetching leave types:", error);
@@ -313,7 +313,7 @@ const RequestLeave = () => {
     };
 
     try {
-      const response = await axios.post("/api/leave", formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/leave`, formData);
       showSuccessAlert(response.data.msg);
       setTimeout(() => {
         navigate("/employee/leave-history");

@@ -70,7 +70,7 @@ const UpdateExpance = () => {
         // Fetch active expense categories
         const fetchExpanceCategory = async () => {
             try {
-                const res = await axios.get("/api/expance/category/active/E");
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/expance/category/active/E`);
                 setExpanceCategoryData(res.data);
             } catch (error) {
                 console.error("Error Fetching Expance Category Data", error);
@@ -83,7 +83,7 @@ const UpdateExpance = () => {
         // Fetch existing expense details to pre-fill the form
         const fetchExpance = async () => {
             try {
-                const res = await axios.get(`/api/expance/${id}`);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/expance/${id}`);
                 setExpanceName(res.data.expanceName);
                 setExpanceAmount(res.data.expanceAmount);
                 setExpanceDate(new Date(res.data.expanceDate).toISOString().split('T')[0]);
@@ -129,7 +129,7 @@ const UpdateExpance = () => {
                 formData.append('expanceImage', expanceImage);
             }
 
-            const res = await axios.put(`/api/expance/${id}`, formData, {
+            const res = await axios.put(`${process.env.REACT_APP_API_URL}/api/expance/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

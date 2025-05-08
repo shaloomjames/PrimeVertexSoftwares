@@ -67,7 +67,7 @@
 //       setLoading(true);
 //       try {
 //         if (Id) {
-//           const res = await axios.get(`/api/salary/${Id}`); // Ensure backticks for template literals
+//           const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/salary/${Id}`); // Ensure backticks for template literals
 //           setsalaryData(res.data); // Set the fetched salary data
 //         }
 //       } catch (error) {
@@ -379,7 +379,7 @@ const ShowSalary = () => {
     const fetchSalary = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`/api/salary/${id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/salary/${id}`);
         setSalaryData(res.data);
         setFilteredData(res.data); // Set both for immediate render
       } catch (error) {

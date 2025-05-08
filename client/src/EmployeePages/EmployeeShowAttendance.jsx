@@ -71,7 +71,7 @@
 //     if (Id) {
 //       const fetchAttendanceData = async () => {
 //         try {
-//           const response = await axios.get(`/api/attendance/${Id}`);
+//           const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/attendance/${Id}`);
 //           setAttendanceData(response.data);
 //         } catch (error) {
 //           console.error("Error fetching attendance data:", error);
@@ -110,7 +110,7 @@
 //     if (!Id || !selectedMonth) return;
 
 //     try {
-//       const response = await axios.get(`/api/attendance/report/${Id}/${selectedMonth}`);
+//       const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/attendance/report/${Id}/${selectedMonth}`);
 //       setAttendanceReport(response.data);
 //     } catch (error) {
 //       console.error("Error fetching attendance report:", error.message);
@@ -388,7 +388,7 @@ const EmployeeShowAttendance = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `/api/attendance/${id}`
+          `${process.env.REACT_APP_API_URL}/api/attendance/${id}`
         );
         setAttendanceData(response.data);
         setAttendanceRecords(response.data); // Set both for immediate render
@@ -433,7 +433,7 @@ const EmployeeShowAttendance = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `/api/attendance/report/${id}/${selectedMonth}`
+        `${process.env.REACT_APP_API_URL}/api/attendance/report/${id}/${selectedMonth}`
       );
       setAttendanceReport(response.data);
     } catch (error) {

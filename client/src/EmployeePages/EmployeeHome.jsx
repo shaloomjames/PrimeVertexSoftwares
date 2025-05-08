@@ -88,7 +88,7 @@
 //   useEffect(() => {
 //     const fetchCurrentAttendance = async () => {
 //       try {
-//         const res = await axios.get(`/api/attendance/${Id}/${currentDate}`); // Fixed route syntax
+//         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/attendance/${Id}/${currentDate}`); // Fixed route syntax
 //         setAttendanceStatus(res?.data || null);
 //       } catch (error) {
 //         console.error("Failed to fetch current attendance:", error);
@@ -120,7 +120,7 @@
 //         employeeId:employeeId
 //       };
 
-//       const response = await axios.post("/api/attendance", attendance);
+//       const response = await axios.post("${process.env.REACT_APP_API_URL}/api/attendance", attendance);
 //       setAttendanceStatus(response.data.attendance);
 //       showSuccessAlert(response?.data?.msg || "Failed to add Attendance");
 //     } catch (error) {
@@ -133,7 +133,7 @@
 //   const markCheckOut = async () => {
 //     try {
 //       const now = new Date();
-//       const response = await axios.put(`/api/attendance/${attendanceStatus._id}`, { timeOut: now.toISOString() }
+//       const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/attendance/${attendanceStatus._id}`, { timeOut: now.toISOString() }
 //       );
 //       console.log(now.toISOString())
 //       setAttendanceStatus(response.data.attendance);
@@ -280,7 +280,7 @@ const EmployeeHome = () => {
     const fetchCurrentAttendance = async () => {
       setIsLoadingStatus(true);
       try {
-        const res = await axios.get(`/api/attendance/${Id}/${currentDate}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/attendance/${Id}/${currentDate}`);
         setAttendanceStatus(res?.data || null);
       } catch (error) {
         console.error("Failed to fetch current attendance:", error);
@@ -313,7 +313,7 @@ const EmployeeHome = () => {
         employeeId: employeeId
       };
 
-      const response = await axios.post("/api/attendance", attendance);
+      const response = await axios.post("${process.env.REACT_APP_API_URL}/api/attendance", attendance);
       setAttendanceStatus(response.data.attendance);
       showSuccessAlert(response?.data?.msg || "Check-In successful");
     } catch (error) {
@@ -329,7 +329,7 @@ const EmployeeHome = () => {
     try {
       const now = new Date();
       const response = await axios.put(
-        `/api/attendance/${attendanceStatus._id}`,
+        `${process.env.REACT_APP_API_URL}/api/attendance/${attendanceStatus._id}`,
         { timeOut: now.toISOString() }
       );
       setAttendanceStatus(response.data.attendance);

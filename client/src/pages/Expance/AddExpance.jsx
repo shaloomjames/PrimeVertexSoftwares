@@ -80,7 +80,7 @@ const AddExpance = () => {
     useEffect(() => {
         const fetchExpanceCategory = async () => {
             try {
-                const res = await axios.get("/api/expance/category/active/E");
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/expance/category/active/E`);
                 setExpanceCategoryData(res.data);
             } catch (error) {
                 console.error("Error Fetching Expance Category Data", error);
@@ -117,7 +117,7 @@ const AddExpance = () => {
             formData.append("expanceCategory", expanceCategory); 
             formData.append("addedBy", addedBy);
 
-            const response = await axios.post("/api/expance", formData, {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/expance`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }

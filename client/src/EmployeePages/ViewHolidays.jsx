@@ -71,7 +71,7 @@
 //   useEffect(() => {
 //     const fetchHolidayData = async () => {
 //       try {
-//         const response = await axios.get("/api/holiday");
+//         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/holiday`);
 //         setHolidayData(response.data);
 //         setFilteredRecords(response.data); // initially, show all records
 //       } catch (error) {
@@ -332,7 +332,7 @@ const ViewHolidays = () => {
     const fetchHolidayData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("/api/holiday");
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/holiday`);
         setHolidayData(response.data);
         setFilteredRecords(response.data);
       } catch (error) {

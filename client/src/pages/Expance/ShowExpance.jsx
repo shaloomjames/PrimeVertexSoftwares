@@ -47,7 +47,7 @@ const ShowExpance = () => {
   useEffect(() => {
     const fetchExpance = async () => {
       try {
-        const res = await axios.get("/api/expance");
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/expance`);
         setExpanceData(res.data);
       } catch (error) {
         console.log("Error Fetching Expance Data", error);
@@ -79,7 +79,7 @@ const ShowExpance = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.delete(`/api/expance/${expanceid}`);
+          const response = await axios.delete(`${process.env.REACT_APP_API_URL}/api/expance/${expanceid}`);
           setExpanceData(
             ExpanceData.filter((expance) => expance._id !== expanceid)
           );
