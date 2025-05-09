@@ -765,7 +765,7 @@ const forgotPasswordController = async (req, res) => {
     await user.save();
 
     // Generate reset URL
-    const resetUrl = `http://localhost:5000/resetpassword/${resetToken}`;
+    const resetUrl = `${FRONTEND_URL}/resetpassword/${resetToken}`;
 
     try {
       const emailHTML = `
