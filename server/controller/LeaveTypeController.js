@@ -462,21 +462,45 @@ const updateLeaveType = async (req, res) => {
     //     }
     //   }
 
-    const updatePromises = employees.map(async (employee) => {
+//     const updatePromises = employees.map(async (employee) => {
+//   const leaveTypeId = updatedLeaveType._id.toString();
+//   const employeeLeaveBalance = employee.leaveBalances.find(
+//     (lb) => lb.leaveTypeId.toString() === leaveTypeId
+//   );
+//   if (employeeLeaveBalance) {
+//     const oldAllowedLeaves = employeeLeaveBalance.allowedLeaves;
+//     const difference = newAllowedLeaves - oldAllowedLeaves;
+//     employeeLeaveBalance.allowedLeaves = newAllowedLeaves;
+//     employeeLeaveBalance.currentBalance += difference;
+
+//     if (employeeLeaveBalance.currentBalance < 0) {
+//       employeeLeaveBalance.currentBalance = 0;
+//     }
+   
+//     if (employeeLeaveBalance.currentBalance > employeeLeaveBalance.allowedLeaves) {
+//       employeeLeaveBalance.currentBalance = employeeLeaveBalance.allowedLeaves;
+//     }
+
+//     await employee.save();
+//   }
+// });
+
+const updatePromises = employees.map(async (employee) => {
   const leaveTypeId = updatedLeaveType._id.toString();
   const employeeLeaveBalance = employee.leaveBalances.find(
     (lb) => lb.leaveTypeId.toString() === leaveTypeId
   );
   if (employeeLeaveBalance) {
     const oldAllowedLeaves = employeeLeaveBalance.allowedLeaves;
-    const difference = newAllowedLeaves - oldAllowedLeaves;
-    employeeLeaveBalance.allowedLeaves = newAllowedLeaves;
+    const difference = allowedLeaves - oldAllowedLeaves;
+
+    employeeLeaveBalance.allowedLeaves = allowedLeaves;
     employeeLeaveBalance.currentBalance += difference;
 
     if (employeeLeaveBalance.currentBalance < 0) {
       employeeLeaveBalance.currentBalance = 0;
     }
-   
+
     if (employeeLeaveBalance.currentBalance > employeeLeaveBalance.allowedLeaves) {
       employeeLeaveBalance.currentBalance = employeeLeaveBalance.allowedLeaves;
     }
@@ -484,6 +508,7 @@ const updateLeaveType = async (req, res) => {
     await employee.save();
   }
 });
+
       // // Check if the employee's leaveBalances has this leave type ID
       // if (employee.leaveBalances.has(leaveTypeId)) {
       //   const employeeLeaveBalance = employee.leaveBalances.get(leaveTypeId);
