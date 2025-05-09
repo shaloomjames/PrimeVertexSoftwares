@@ -765,7 +765,7 @@ const forgotPasswordController = async (req, res) => {
     await user.save();
 
     // Generate reset URL
-    const resetUrl = `${FRONTEND_URL}/resetpassword/${resetToken}`;
+    const resetUrl = `https://prime-vertex-softwares.vercel.app/resetpassword/${resetToken}`;
 
     try {
       const emailHTML = `
