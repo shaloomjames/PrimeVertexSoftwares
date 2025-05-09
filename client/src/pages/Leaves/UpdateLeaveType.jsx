@@ -71,7 +71,7 @@ const UpdateLeaveType = () => {
         setallowedLeaves(response.data.allowedLeaves);
         setleaveTypeStatus(response.data.leaveTypeStatus);
       } catch (error) {
-        console.error("Error fetching LeaveType Data From the Api !", error);
+          console.error("Error fetching LeaveType Data From the Api !", error);
       }
     };
     fetchLeaveType();

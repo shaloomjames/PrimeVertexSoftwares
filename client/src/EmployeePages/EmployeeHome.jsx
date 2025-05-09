@@ -313,7 +313,7 @@ const EmployeeHome = () => {
         employeeId: employeeId
       };
 
-      const response = await axios.post("${process.env.REACT_APP_API_URL}/api/attendance", attendance);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/attendance`, attendance);
       setAttendanceStatus(response.data.attendance);
       showSuccessAlert(response?.data?.msg || "Check-In successful");
     } catch (error) {
